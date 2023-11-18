@@ -32,7 +32,7 @@ void main(){
     // Open necessary files
     sym = fopen("symtab.dat", "w");
     fptr = fopen("sicprogram.dat", "r");
-    inter_ptr = fopen("intermediate.txt", "w");
+    inter_ptr = fopen("intermediate.dat", "w");
 
     // Read first line from program file
     readline();
@@ -49,7 +49,7 @@ void main(){
     readline();
 
     while (strcmp(opcode, "END") != 0){
-        if (strcmp(label, "-") != 0)
+        if (strcmp(label, "**") != 0)
             add_sym(); // to check for duplicates in symtab
         if (strcmp(opcode, "WORD") == 0){
             writeline();

@@ -1,7 +1,7 @@
 COPY    START   1000
-**      LDA     ZERO
-MOVECH  LDCH    STR1
-**      STCH    STR2
+**      LDX     ZERO
+MOVECH  LDCH    STR1,X
+**      STCH    STR2,X
 **      TIX     ELEVEN
 **      JLT     MOVECH
 STR1    BYTE    C'TEST**STRING'
