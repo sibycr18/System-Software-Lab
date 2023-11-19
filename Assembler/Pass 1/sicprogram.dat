@@ -4,7 +4,7 @@ MOVECH  LDCH    STR1
 **      STCH    STR2
 **      TIX     ELEVEN
 **      JLT     MOVECH
-STR1    BYTE    C'TEST**STRING'
+STR1    BYTE    C'TEST-STRING'
 STR2    RESB    11
 ZERO    WORD    0
 ELEVEN  WORD    11
