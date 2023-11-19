@@ -25,7 +25,7 @@ void writeline(){
 // Add symbol to symbol table
 void add_sym(){
     fprintf(sym, "%s\t", label);
-    fprintf(sym, "%x\n", locctr);
+    fprintf(sym, "%X\n", locctr);
 }
 
 void main(){
