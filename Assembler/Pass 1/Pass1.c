@@ -16,7 +16,7 @@ void readline(){
 
 // Write line to intermediate file
 void writeline(){
-    fprintf(inter_ptr, "%x\t", locctr);
+    fprintf(inter_ptr, "%X\t", locctr);
     fprintf(inter_ptr, "%s\t", label);
     fprintf(inter_ptr, "%s\t", opcode);
     fprintf(inter_ptr, "%s\n", operand);
