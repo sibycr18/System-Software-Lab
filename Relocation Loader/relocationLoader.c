@@ -5,6 +5,7 @@
 void main(){
     char add[6], length[10], input[10], binary[12], bitmask[12], relocbit;
     int start, inp, len, i, address, opcode, addr, actualadd;
+    int address_diff = 0;
     FILE *fp1, *fp2;
     printf("Enter the actual starting address : ");
     scanf("%d", &start);
@@ -21,8 +22,10 @@ void main(){
             fscanf(fp1, "%d", &address);
             fscanf(fp1, "%s", bitmask);
             // printf("%d\t%s\n", address, bitmask);
-            address += start;
-            printf("%d\t%s\n", address, bitmask);
+
+            address_diff = start - address;
+            address += address_diff;
+            // printf("%d\t%s\n", address, bitmask);
             len = strlen(bitmask);
             for (i = 0; i < len; i++){
                 fscanf(fp1, "%d", &opcode);
@@ -31,7 +34,7 @@ void main(){
                 if (relocbit == '0')
                     actualadd = addr;
                 else
-                    actualadd = addr + start;
+                    actualadd = addr + address_diff;
                 fprintf(fp2, "%d\t%d%d\n", address, opcode, actualadd);
                 printf("%d\t%d%d\n", address, opcode, actualadd);
                 address += 3;
