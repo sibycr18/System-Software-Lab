@@ -34,7 +34,8 @@ void main(){
                 if (relocbit == '0')
                     actualadd = addr;
                 else
-                    actualadd = addr + address_diff;
+                    actualadd = addr + start;
+                    // actualadd = addr + address_diff;
                 fprintf(fp2, "%d\t%d%d\n", address, opcode, actualadd);
                 printf("%d\t%d%d\n", address, opcode, actualadd);
                 address += 3;
