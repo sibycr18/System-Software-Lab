@@ -23,8 +23,8 @@ void main(){
             fscanf(fp1, "%s", bitmask);
             // printf("%d\t%s\n", address, bitmask);
 
-            address_diff = start - address;
-            address += address_diff;
+            // address_diff = start - address;
+            address += start;
             // printf("%d\t%s\n", address, bitmask);
             len = strlen(bitmask);
             for (i = 0; i < len; i++){
