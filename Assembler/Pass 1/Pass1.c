@@ -3,36 +3,36 @@
 #include <stdlib.h>
 #include <string.h>
 
-FILE *fptr, *inter_ptr, *sym;
+FILE *programFile, *intermediateFile, *symTab;
 int locctr;
 char label[100], opcode[100], operand[100];
 
 // Read line from program file
 void readline(){
-    fscanf(fptr, "%s", label);
-    fscanf(fptr, "%s", opcode);
-    fscanf(fptr, "%s", operand);
+    fscanf(programFile, "%s", label);
+    fscanf(programFile, "%s", opcode);
+    fscanf(programFile, "%s", operand);
 }
 
 // Write line to intermediate file
 void writeline(){
-    fprintf(inter_ptr, "%X\t", locctr);
-    fprintf(inter_ptr, "%s\t", label);
-    fprintf(inter_ptr, "%s\t", opcode);
-    fprintf(inter_ptr, "%s\n", operand);
+    fprintf(intermediateFile, "%X\t", locctr);
+    fprintf(intermediateFile, "%s\t", label);
+    fprintf(intermediateFile, "%s\t", opcode);
+    fprintf(intermediateFile, "%s\n", operand);
 }
 
 // Add symbol to symbol table
 void add_sym(){
-    fprintf(sym, "%s\t", label);
-    fprintf(sym, "%X\n", locctr);
+    fprintf(symTab, "%s\t", label);
+    fprintf(symTab, "%X\n", locctr);
 }
 
 void main(){
     // Open necessary files
-    sym = fopen("symtab.dat", "w");
-    fptr = fopen("sicprogram.dat", "r");
-    inter_ptr = fopen("intermediate.dat", "w");
+    symTab = fopen("symtab.dat", "w");
+    programFile = fopen("sicprogram.dat", "r");
+    intermediateFile = fopen("intermediate.dat", "w");
 
     // Read first line from program file
     readline();
@@ -67,7 +67,7 @@ void main(){
     }
 
     // Close files
-    fclose(fptr);
-    fclose(sym);
-    fclose(inter_ptr);
+    fclose(programFile);
+    fclose(symTab);
+    fclose(intermediateFile);
 }
