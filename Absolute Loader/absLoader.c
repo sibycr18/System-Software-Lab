@@ -4,8 +4,8 @@
 #include <string.h>
 
 FILE *objectFile;
-char record[100], location[4], instruction[2];
-int i, j, k=0, flag=0, recordLength, startAddress, currentIndex, newLocation;
+char record[100], location[4], instruction[2], objCode[10];
+int i, k=0, flag=0, recordLength, startAddress, currentIndex, newLocation;
 
 void main(){
     // Open object program file
@@ -13,8 +13,8 @@ void main(){
     // Read the first record from the file
     fscanf(objectFile, "%s", record);
 
-    printf("Location\tObject Code\n");
-    printf("----------------------------\n");
+    printf("\nLocation\tObject Code\n");
+    printf("---------------------------\n");
 
     // Loop until end of record is reached
     while(record[0] != 'E'){
@@ -35,13 +35,16 @@ void main(){
                     currentIndex++;
                 }
                 else{
-                    printf("00%d  \t   %c%c\n", newLocation, record[currentIndex], record[currentIndex+1]);
-                    // Move to the next object code byte
-                    currentIndex += 2;
-                    newLocation += 1;
+                    for(i=0; i<6; i++){
+                        objCode[i] = record[currentIndex++];
+                    }
+                    printf("00%d\t\t %s\n", newLocation, objCode);
+                    // Move to the next object code
+                    newLocation += 3;
                 }
             }
         }
+        printf("\n");
         fscanf(objectFile, "%s", record);
     }
 }
