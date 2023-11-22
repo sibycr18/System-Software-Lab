@@ -47,33 +47,24 @@ void main(){
 
     // Read next line from program file
     readline();
+    writeline(); // since same address for START
 
     while (strcmp(opcode, "END") != 0){
         if (strcmp(label, "**") != 0)
-            add_sym(); // to check for duplicates in symtab
-        if (strcmp(opcode, "WORD") == 0){
-            writeline();
+            add_sym();
+        if (strcmp(opcode, "WORD") == 0)
             locctr += 3;
-        }
-        else if (strcmp(opcode, "RESW") == 0){
-            writeline();
+        else if (strcmp(opcode, "RESW") == 0)
             locctr += atoi(operand) * 3;
-        }
-        else if (strcmp(opcode, "RESB") == 0){
-            writeline();
+        else if (strcmp(opcode, "RESB") == 0)
             locctr += atoi(operand);
-        }
-        else if (strcmp(opcode, "BYTE") == 0){
-            writeline();
+        else if (strcmp(opcode, "BYTE") == 0)
             locctr += strlen(operand)-3;
-        }
-        else{
-            writeline();
+        else
             locctr += 3;
-        }
         readline();
+        writeline();
     }
-    writeline();
 
     // Close files
     fclose(fptr);
