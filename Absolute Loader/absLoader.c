@@ -22,7 +22,7 @@ void main(){
 
         // Check if it's a text record
         if (record[0] == 'T'){
-            // Get the start address from the record
+            // Get the starting location from the record
             for (k=0; k<4; k++)
                 location[k] = record[k+4];
             startAddress = atoi(location);

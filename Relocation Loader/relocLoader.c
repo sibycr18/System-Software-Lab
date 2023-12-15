@@ -56,6 +56,7 @@ void main(){
             fscanf(fp1, "%s", bitmask);
 
             address += start;
+            // printf("%d", address);
             hexToBinary(bitmask);
             len = strlen(bit);
 
@@ -70,7 +71,7 @@ void main(){
                 else
                     actualadd = addr + start;
 
-                fprintf(fp2, "\n00%X\t\t%X%X", start, opcode, actualadd);
+                fprintf(fp2, "\n%X\t\t%X%X", start, opcode, actualadd);
                 start += 3;
             }
             fscanf(fp1, "%s", input);
